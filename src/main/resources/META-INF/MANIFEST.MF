@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: lingco
+Build-Jdk: 1.8
+Created-By: Apache Maven 3.5.1
+Archiver-Version: Plexus Archiver
+Bundle-SymbolicName: NONAME
+Bundle-Version: 1.0

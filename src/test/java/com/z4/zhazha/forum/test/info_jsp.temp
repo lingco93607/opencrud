@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>#lowername# add</title>
+<%@include file="../common/include.jsp"%>
+<script type="text/javascript"
+	src="./javascript/#lowername#/#lowername#_info.js"></script>
+</head>
+<body>
+	<!--新增修改页面的弹窗-->
+	<div align="center">
+		<form id="#lowername#_info_form" action="action/#lowername#/save#lowername#" enctype='multipart/form-data' method="post" style="font-family:microsoft yahei;">
+			<table>
+			  #jspRowName#
+			</table>
+	    </form>
+    </div>
+	<!-- end -->
+	<div align="center" style="margin-top: 20px;">
+	   <input type='button' value='保存' 	id='savebutton'/>
+	   <input type='reset' 	value='重置' id='resetbutton' style='margin-left:12px;' /> 
+	   <input type='button' value='关闭' id='closebutton' style='margin-left:12px;' />
+	</div>
+</body>
+</html>

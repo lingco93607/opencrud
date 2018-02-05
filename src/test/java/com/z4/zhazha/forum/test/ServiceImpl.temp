@@ -1,0 +1,27 @@
+package #packagename#.service.impl#folderName#;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import #packagename#.service.impl.ServiceSupport;
+import #packagename#.dao.Dao;
+import #packagename#.pojo#folderName#.#classname#;
+
+
+@Service
+@Qualifier("#lowername#service")
+public class #classname#ServiceImpl extends ServiceSupport<#classname#> {
+	
+	@Autowired
+	@Qualifier("#lowername#jpa")
+	Dao<#classname#> dao;
+
+	@Override
+	public Dao<#classname#> getDao() {
+		// TODO Auto-generated method stub
+		return this.dao;
+	}
+
+	
+
+}

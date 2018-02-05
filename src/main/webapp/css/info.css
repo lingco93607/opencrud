@@ -1,0 +1,20 @@
+body { color: rgb(0, 54, 143); background: none repeat scroll 0% 0% rgb(247, 252, 253); font-size: 9pt; }
+table, div, span, tr, td, th { font-size: 9pt; color:#00414E;}
+.panel_body { background: none repeat scroll 0% 0% rgb(231, 245, 254); }
+.table_row { background: none repeat scroll 0% 0% rgb(230, 247, 254) ; text-align:right}
+* { font-size: 9pt; }
+.workarea { background: none repeat scroll 0% 0% rgb(243, 249, 250); border: 1px solid rgb(117, 181, 195); border-collapse: collapse; }
+.workarea .workarea_title { background: url('workarea_title_bg.jpg') repeat-x scroll 0% 0% rgb(227, 240, 242); height: 27px; border-bottom: 1px solid rgb(117, 181, 195); padding-left: 5px; color: rgb(255, 102, 0); font-weight: bold; }
+.form_bottom { padding: 1px 0px; background: none repeat scroll 0% 0% rgb(211, 240, 255); text-align: center; border-right: 1px solid rgb(117, 181, 195); border-bottom: 1px solid rgb(117, 181, 195); border-left: 1px solid rgb(117, 181, 195); }
+.idle { border: 1px rgb(133, 177, 222); background-image: url('blue_bg.png'); background-repeat: repeat-x; background-position: center top; }
+table {   border-collapse: collapse; margin: 0px auto; }
+table tr  td{ border: 1px solid rgb(133, 177, 222);height: 28px;}
+.panel_head  /* the block title */
+{
+background:#4C96A6;
+height:22px;
+font-weight:bold;
+border:none;
+color:#fff;
+padding-left:20px;
+}

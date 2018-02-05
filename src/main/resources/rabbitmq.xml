@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit" 
+	xsi:schemaLocation=" 
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+           http://www.springframework.org/schema/rabbit  
+           http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+           
+	<bean id="connectionFactory" class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+    	<property name="host" value="${mq.host}"></property>
+    	<property name="port" value="${mq.port}"></property>
+    	<property name="username" value="${mq.username}"></property>
+    	<property name="password" value="${mq.password}"></property>
+    </bean>
+    
+    <rabbit:admin connection-factory="connectionFactory"/>
+    
+    <bean id="rabbitTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
+    	<constructor-arg ref="connectionFactory" />
+    </bean>
+    
+    <rabbit:queue id="forumQueue" durable="true" auto-delete="false" exclusive="false" name="forumQueue"/>
+    
+    <rabbit:direct-exchange name="forumExchange" durable="true" auto-delete="false" id="forumExchange">
+    	<rabbit:bindings>
+    		<rabbit:binding queue="forumQueue" key="forumQueue"></rabbit:binding>
+    		<rabbit:binding queue="forumQueueLocal" key="forumQueueLocal"></rabbit:binding>
+    	</rabbit:bindings>
+    </rabbit:direct-exchange>
+    
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+    	<rabbit:listener queues="forumQueue" ref="rmqConsumer"/>
+    	<rabbit:listener queues="forumQueue" ref="rmqConsumer1"/>
+    </rabbit:listener-container>
+    
+    <rabbit:queue id="forumQueueLocal" durable="true" auto-delete="false" exclusive="false" name="forumQueueLocal"/>
+    
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+    	<rabbit:listener queues="forumQueueLocal" ref="rmqConsumer"/>
+    </rabbit:listener-container>
+    
+     <rabbit:queue id="tokenChangeQueue" durable="true" auto-delete="false" exclusive="false" name="tokenChangeQueue"/>
+     <rabbit:queue id="tokenCreateQueue" durable="true" auto-delete="false" exclusive="false" name="tokenCreateQueue"/>
+    
+    <rabbit:direct-exchange name="tokenExchange" durable="true" auto-delete="false" id="tokenExchange">
+    	<rabbit:bindings>
+    		<rabbit:binding queue="tokenChangeQueue" key="tokenChangeQueue"></rabbit:binding>
+    		<rabbit:binding queue="tokenCreateQueue" key="tokenCreateQueue"></rabbit:binding>
+    	</rabbit:bindings>
+    </rabbit:direct-exchange>
+    
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+    	<rabbit:listener queues="tokenChangeQueue" ref="tokenChangeConsumer"/>
+    	<rabbit:listener queues="tokenCreateQueue" ref="tokenCreateConsumer"/>
+    </rabbit:listener-container>
+    
+     <rabbit:queue id="zMessageQueue" durable="true" auto-delete="false" exclusive="false" name="zMessageQueue"/>
+    
+    <rabbit:direct-exchange name="zMessageExchange" durable="true" auto-delete="false" id="zMessageExchange">
+    	<rabbit:bindings>
+    		<rabbit:binding queue="zMessageQueue" key="zMessageQueue"></rabbit:binding>
+    	</rabbit:bindings>
+    </rabbit:direct-exchange>
+    
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+    	<rabbit:listener queues="zMessageQueue" ref="newZMessageConsumer"/>
+    </rabbit:listener-container>
+    
+    <bean id="rmqProducer" class="com.z4.zhazha.forum.rabbitmq.RmqProducer">
+    	<property name="amqpTemplate" ref="rabbitTemplate"></property>
+    </bean>
+    
+    <bean id="rmqConsumer" class="com.z4.zhazha.forum.rabbitmq.RmqConsumer" ></bean>
+    <bean id="rmqConsumer1" class="com.z4.zhazha.forum.rabbitmq.RmqConsumer1" ></bean>
+    <bean id="tokenChangeConsumer" class="com.z4.zhazha.forum.rabbitmq.TokenChangeConsumer" ></bean>
+    <bean id="tokenCreateConsumer" class="com.z4.zhazha.forum.rabbitmq.TokenCreateConsumer" ></bean>
+    <bean id="newZMessageConsumer" class="com.z4.zhazha.forum.rabbitmq.NewZMessageConsumer" ></bean>
+    
+    <bean id="jsonMessageConverter" class="com.z4.zhazha.forum.util.FastJsonMessageConverter"></bean>
+    
+    <bean id="messageHandler" class="com.z4.zhazha.forum.rabbitmq.MessageHandler"></bean>
+    
+    <bean id="messageQueueListenerAdapter" class="org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter">
+    	<constructor-arg ref="messageHandler"/>
+    	<property name="defaultListenerMethod" value="handleMessage"></property>
+    	<property name="messageConverter" ref="jsonMessageConverter"></property>
+    </bean>
+    
+    
+    
+    <bean id="messageSender" class="com.z4.zhazha.forum.rabbitmq.MessageSender">
+    	<property name="amqpTemplate" ref="rabbitTemplate"></property>
+    </bean>
+    
+    
+    
+</beans>

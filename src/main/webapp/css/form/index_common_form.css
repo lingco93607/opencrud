@@ -1,0 +1,231 @@
+.selectcode_button {
+	background: url('../../images/newform/more2.gif') no-repeat scroll 0% 0%
+		transparent;
+	border: 1px none;
+	width: 20px;
+	height: 20px;
+	float: right;
+}
+
+.uploadFileTab {
+	width: 100%;
+	color: rgb(40, 81, 143);
+	height: 14px;
+	font-size: 12px;
+	line-height: 14px;
+	padding-top: 0px;
+	margin-top: 0px;
+	text-decoration: none;
+}
+
+.bodyMain {
+	background: url('../../images/newform/bg.gif') no-repeat scroll center
+		top rgb(255, 255, 255);
+	margin: 0px auto;
+}
+
+html {
+	color: rgb(51, 51, 51);
+}
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form,
+	fieldset, legend, input, textarea, p, blockquote, th, td, hr, button,
+	article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	margin: 0px;
+	padding: 0px;
+}
+
+body, button, input, select, textarea {
+	font: 12px/1.5 tahoma, arial, "Hiragino Sans GB", 微软雅黑, 宋体, sans-serif;
+}
+
+button, input, select, textarea {
+	vertical-align: middle;
+}
+
+input, select, textarea {
+	font-size: 100%;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+img {
+	border: 0px none;
+}
+
+iframe {
+	display: block;
+}
+
+ins, a {
+	text-decoration: none;
+}
+
+a {
+	color: rgb(85, 85, 85);
+}
+
+a:hover {
+	color: rgb(47, 141, 220) ! important;
+}
+
+.fn-clear:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0px;
+	content: " ";
+	clear: both;
+	height: 0px;
+}
+
+.fn-left {
+	float: left;
+}
+
+.fn-right {
+	float: right;
+}
+
+.fn-left a, .fn-right a {
+	font: 12px/1.5 tahoma, arial, "Hiragino Sans GB", 微软雅黑, 宋体, sans-serif;
+}
+
+.html_bg {
+	background: url('../../images/newform/bg.png') repeat-x scroll left top
+		rgb(99, 142, 200);
+}
+
+.top2 {
+	background: url('../../images/newform/t_bg.png') repeat scroll 0% 0%
+		transparent;
+	height: 70px;
+	box-shadow: 0px 0px 3px rgb(170, 170, 170);
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	opacity: 0.95;
+}
+
+.top2 {
+	box-shadow: 0px 0px 3px rgb(170, 170, 170);
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	opacity: 0.95;
+}
+
+.t_btn_tools_div_inner {
+	padding-top: 10px;
+}
+
+.btn1 {
+	width: 60px;
+	height: 42px;
+	text-align: center;
+	display: inline-block;
+}
+
+.btn1 p {
+	line-height: 14px;
+}
+
+.form_middle {
+	padding: 80px 0px 60px;
+}
+
+.middle_inner {
+	width: 95%;
+	margin: 0px auto;
+	min-width: 980px;
+}
+
+.attachment_wrap_div {
+	width: 200px;
+	padding: 10px;
+	float: right;
+	background: none repeat scroll 0% 0% rgb(255, 255, 207);
+	margin-left: 12px;
+	min-height: 1000px;
+}
+
+.att_div1 {
+	margin-bottom: 8px;
+}
+
+.form_wrap_div {
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	margin-right: 235px;
+	min-width: 740px;
+	min-height: 1020px;
+}
+
+.selectuser_div {
+	background-color: rgb(255, 255, 255);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(205, 205, 205);
+	color: rgb(102, 102, 102);
+}
+
+.selectuser_text {
+	float: left;
+	border: 0px none;
+	color: rgb(102, 102, 102);
+	font-size: 100%;
+	margin-left: 5px;
+	background: none repeat scroll 0% 0% transparent;
+}
+
+.select_div {
+	background-color: rgb(255, 255, 255);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(205, 205, 205);
+	color: rgb(102, 102, 102);
+}
+
+.select_text {
+	float: left;
+	border: 0px none;
+	color: rgb(102, 102, 102);
+	font-size: 100%;
+}
+
+.select_button {
+	background: url('../../images/newform/select.gif') repeat scroll 0% 0%
+		transparent;
+	overflow: hidden;
+	border: 0px none;
+	width: 16px;
+	height: 16px;
+	margin-top: 2px;
+	float: right;
+	margin-right: 2px;
+}
+
+.table6 tr th, .table6 tr td {
+	border: 1px solid rgb(204, 204, 204);
+}
+
+.table6 tr th {
+	padding: 8px 6px;
+	background: none repeat scroll 0% 0% rgb(247, 247, 247);
+	color: rgb(0, 89, 178);
+}
+
+.table6 tr td {
+	padding: 8px 6px;
+}
+
+.table6 td span table td, .table3 td span table th {
+	border: medium none;
+	padding: 0px;
+}
+
+th {
+	font-size: 14px;
+}

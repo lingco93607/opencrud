@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+#page {
+	margin: 0 0 0 0;
+	padding: 10px 10px;
+}
+
+#logo {
+	margin: 0 atuo;
+	height: 100px;
+}
+
+#addroidiv {
+	margin: 0 0;
+	height: 50%;
+	width: 50%;
+	float: left;
+}
+
+#map1 {
+	margin: 0 0;
+	height: 50%;
+	width: 49%;
+	float: right;
+}

@@ -1,0 +1,16 @@
+﻿*{ color: #000; font-size:12px; }
+body { margin: 0px; }
+td { font-size: 12px; color: rgb(0, 0, 0); }
+a:link { color: rgb(0, 0, 0); text-decoration: none; }
+a:visited { color: rgb(0, 0, 0); text-decoration: none; }
+a:hover { color: rgb(0, 0, 0); text-decoration: none; }
+a:active { color: rgb(0, 0, 0); text-decoration: none; }
+.lei4:link { color: rgb(0, 0, 0); text-decoration: none; }
+.lei4:visited { color: rgb(0, 0, 0); text-decoration: none; }
+.lei4:hover { color: rgb(255, 255, 255); text-decoration: none; }
+.lei4:active { text-decoration: none; }
+.bai_zi_x { font-size: 12px; color: rgb(255, 255, 255); }
+.taitou { font-size: 25px; font-weight: bold; color: rgb(255, 255, 255); font-family:"微软雅黑"; }
+.red_cu { font-size: 12px; font-weight: bold; color: rgb(240, 0, 0); }
+body { margin-left: 6px; margin-right: 6px; } 
+.title{color: rgb(255, 0, 0); font-size: 14px; background:"red";}

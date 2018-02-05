@@ -1,0 +1,22 @@
+package #packagename#.dao.impl#folderName#;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+import #packagename#.dao.impl.DaoSupport;
+import #packagename#.pojo#folderName#.#classname#;
+
+@Repository
+@Qualifier("#lowername#jpa")
+public class #classname#DaoJpaImpl extends DaoSupport<#classname#>{
+	
+	
+
+	public #classname#DaoJpaImpl() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+
+}
