@@ -9,45 +9,45 @@
 
 	<name>zhazha_forum</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<profiles>
 		<profile>
-				<!-- 本地环境 -->
-				<id>local</id>
-				<properties>
-					<db-url>jdbc:postgresql://localhost:5432/papa</db-url>
-					<db-username>lingco</db-username>
-					<db-password>aaaaaa</db-password>
-					<forumImgPath>D:/data/forumimg/</forumImgPath>
-				</properties>
-				<activation>
-					<activeByDefault>true</activeByDefault>
-				</activation>
+			<!-- 本地环境 -->
+			<id>local</id>
+			<properties>
+				<db-url>jdbc:postgresql://localhost:5432/papa</db-url>
+				<db-username>lingco</db-username>
+				<db-password>aaaaaa</db-password>
+				<forumImgPath>f:\data\forumimg\</forumImgPath>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 		<profile>
-				<!-- 开发环境 -->
-				<id>aliyun</id>
-				<properties>
-					<db-url>jdbc:postgresql://172.19.153.190:5432/forum_test</db-url>
-					<db-username>xintt</db-username>
-					<db-password>XTThxy0801</db-password>
-					<forumImgPath>/opt/forumimg/</forumImgPath>
-				</properties>
+			<!-- 开发环境 -->
+			<id>aliyun</id>
+			<properties>
+				<db-url>jdbc:postgresql://172.19.153.190:5432/forum_test</db-url>
+				<db-username>xintt</db-username>
+				<db-password>XTThxy0801</db-password>
+				<forumImgPath>/opt/forumimg/</forumImgPath>
+			</properties>
 		</profile>
 		<profile>
-				<!-- 开发环境 -->
-				<id>dev</id>
-				<properties>
-					<db-url>jdbc:postgresql://10.2.1.12:5432/papa</db-url>
-					<db-username>Lingco</db-username>
-					<db-password>oceandata888</db-password>
-					<forumImgPath>/home/data/forumimg/</forumImgPath>
-				</properties>
-				<!-- 默认激活本环境 -->
-				
-		</profile>				
+			<!-- 开发环境 -->
+			<id>dev</id>
+			<properties>
+				<db-url>jdbc:postgresql://10.2.1.12:5432/papa</db-url>
+				<db-username>Lingco</db-username>
+				<db-password>oceandata888</db-password>
+				<forumImgPath>/home/data/forumimg/</forumImgPath>
+			</properties>
+			<!-- 默认激活本环境 -->
+
+		</profile>
 	</profiles>
-	
+
 	<dependencies>
 
 		<!-- junit, used in test -->
@@ -134,28 +134,28 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>2.8.5</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-annotations</artifactId>
-		    <version>2.8.5</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.8.5</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
 		<dependency>
-		    <groupId>net.sf.json-lib</groupId>
-		    <artifactId>json-lib</artifactId>
-		    <version>2.4</version>
-		    <classifier>jdk15</classifier>  
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
 		</dependency>
-		
-		<!--fastjson-->
-	    <dependency>
-	      <groupId>com.alibaba</groupId>
-	      <artifactId>fastjson</artifactId>
-	      <version>1.2.5</version>
-	    </dependency>
-		
+
+		<!--fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
@@ -204,7 +204,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -217,16 +217,16 @@
 			<version>5.3.4.Final</version>
 		</dependency>
 
-		<dependency>    
-            <groupId>org.apache.httpcomponents</groupId>    
-            <artifactId>httpclient</artifactId>    
-            <version>4.5.3</version>    
-        </dependency> 
-        
-        <dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpcore</artifactId>
-		    <version>4.4.6</version>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.6</version>
 		</dependency>
 
 		<!-- applicationconext, jpa.xsd -->
@@ -241,7 +241,7 @@
 			<artifactId>spring-data-commons</artifactId>
 			<version>1.12.6.RELEASE</version>
 		</dependency>
-		
+
 		<!-- common -->
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -274,11 +274,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.6</version>
-</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
 
 
 		<!-- applicationcontext, data resource -->
@@ -345,50 +345,50 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-    		 <groupId>cn.jpush.api</groupId>
-		    <artifactId>jpush-client</artifactId>
-		    <version>3.2.17</version>
+			<groupId>cn.jpush.api</groupId>
+			<artifactId>jpush-client</artifactId>
+			<version>3.2.17</version>
 		</dependency>
 		<dependency>
-        <groupId>cn.jpush.api</groupId>
-        <artifactId>jiguang-common</artifactId>
-        <version>1.0.3</version>
-    </dependency>
-    <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-all</artifactId>
-        <version>4.1.6.Final</version>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.google.code.gson</groupId>
-        <artifactId>gson</artifactId>
-        <version>2.3</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-	<dependency>
-	    <groupId>redis.clients</groupId>
-	    <artifactId>jedis</artifactId>
-	    <version>2.9.0</version>
-	</dependency>
+			<groupId>cn.jpush.api</groupId>
+			<artifactId>jiguang-common</artifactId>
+			<version>1.0.3</version>
+		</dependency>
 		<dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>3.6.5</version>
-            <exclusions>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.6.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>3.6.5</version>
+			<exclusions>
 				<exclusion>
 					<groupId>commons-cli</groupId>
 					<artifactId>commons-cli</artifactId>
 				</exclusion>
 			</exclusions>
- </dependency>
+		</dependency>
 
- <dependency>
-        <groupId>org.springframework.amqp</groupId>
-        <artifactId>spring-rabbit</artifactId>
-        <version>1.4.5.RELEASE</version>
-    </dependency>
-    
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>1.4.5.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -400,6 +400,29 @@
 			</resource>
 		</resources>
 		<plugins>
+		
+			<!-- 用于避免jsms文件夹无法编译错误 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/jsms</source>
+								<source>jpush</source>
+								<source>src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -417,8 +440,8 @@
 				<version>2.4</version>
 				<configuration>
 					<warName>zhazhaForum</warName>
-					
-					<outputDirectory>/${tomcat.outputDirectory.xiaoy}</outputDirectory>
+
+					<outputDirectory>/${tomcat.outputDirectory.lingco}</outputDirectory>
 					<webResources>
 						<resource>
 							<directory>${basedir}/src/main/webapp/WEB-INF</directory>
@@ -440,6 +463,9 @@
 		<jersey.version>2.25</jersey.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tomcat.outputDirectory.xintt>/home/hadoop/Software/apache-tomcat-9.0.0.M15/webapps</tomcat.outputDirectory.xintt>
-		<tomcat.outputDirectory.xiaoy>D:\Program Files (x86)\apache-tomcat-9.0.0.M1\webapps</tomcat.outputDirectory.xiaoy>
+		<tomcat.outputDirectory.xiaoy>D:\Program Files
+			(x86)\apache-tomcat-9.0.0.M1\webapps</tomcat.outputDirectory.xiaoy>
+		<tomcat.outputDirectory.lingco>E:\apache-tomcat-9.0.4\webapps</tomcat.outputDirectory.lingco>
+
 	</properties>
 </project>
