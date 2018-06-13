@@ -1,0 +1,2 @@
+# opencrud
+open jpa crud
