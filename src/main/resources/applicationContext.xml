@@ -23,7 +23,6 @@
 	<context:component-scan base-package="com.z4.zhazha.forum" />
 <!-- 	<tx:annotation-driven/> -->
 
-	<import resource="classpath:rabbitmq.xml"/>
 
 	<!-- 定义实体管理器工厂 -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

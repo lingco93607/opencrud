@@ -9,11 +9,7 @@ public class RestApplication extends ResourceConfig{
         
         //自己写的服务  
         register(ZUserRestService.class);
-        register(ZGroupRestService.class);
-        register(ZHistoryRestService.class);
-        register(ZRelationRestService.class);
-        register(ZUserGroupRestService.class);
- 
+
         //用 Jackson JSON 的提供者来解释 JSON  
         register(JacksonFeature.class);  
         

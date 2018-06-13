@@ -38,9 +38,9 @@
 			<!-- 开发环境 -->
 			<id>dev</id>
 			<properties>
-				<db-url>jdbc:postgresql://10.2.1.12:5432/papa</db-url>
-				<db-username>Lingco</db-username>
-				<db-password>oceandata888</db-password>
+				<db-url>jdbc:postgresql://localhost:5432/jl</db-url>
+				<db-username>lingco</db-username>
+				<db-password>aaaaaa</db-password>
 				<forumImgPath>/home/data/forumimg/</forumImgPath>
 			</properties>
 			<!-- 默认激活本环境 -->
@@ -462,10 +462,9 @@
 		<hibernate.version>4.2.1.Final</hibernate.version>
 		<jersey.version>2.25</jersey.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tomcat.outputDirectory.xintt>/home/hadoop/Software/apache-tomcat-9.0.0.M15/webapps</tomcat.outputDirectory.xintt>
-		<tomcat.outputDirectory.xiaoy>D:\Program Files
-			(x86)\apache-tomcat-9.0.0.M1\webapps</tomcat.outputDirectory.xiaoy>
-		<tomcat.outputDirectory.lingco>E:\apache-tomcat-9.0.4\webapps</tomcat.outputDirectory.lingco>
+		<tomcat.outputDirectory.xintt>/Users/lingco/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.xintt>
+		<tomcat.outputDirectory.xiaoy>/Users/lingco/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.xiaoy>
+		<tomcat.outputDirectory.lingco>/Users/lingco/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.lingco>
 
 	</properties>
 </project>

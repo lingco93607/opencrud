@@ -6,17 +6,10 @@
 
 	<persistence-unit name="zhazha-forum" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>com.z4.zhazha.forum.pojo.CReview</class>
-		<class>com.z4.zhazha.forum.pojo.RelationUserArticle</class>
-		<class>com.z4.zhazha.forum.pojo.Review</class>
-		<class>com.z4.zhazha.forum.pojo.UserArticleUnionID</class>
-		<class>com.z4.zhazha.forum.pojo.ZGroup</class>
-		<class>com.z4.zhazha.forum.pojo.ZHistory</class>
-		<class>com.z4.zhazha.forum.pojo.ZMessage</class>
-		<class>com.z4.zhazha.forum.pojo.ZRelation</class>
+		<class>com.z4.zhazha.forum.pojo.Book</class>
+		<class>com.z4.zhazha.forum.pojo.Student</class>
 		<class>com.z4.zhazha.forum.pojo.ZUser</class>
-		<class>com.z4.zhazha.forum.pojo.ZUserGroup</class>
-		<class>com.z4.zhazha.forum.pojo.Article</class>
+
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
