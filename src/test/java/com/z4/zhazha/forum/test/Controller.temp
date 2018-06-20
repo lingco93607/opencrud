@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import #packagename#.dto.PaginationList;
@@ -159,7 +160,7 @@ public class #classname#Controller {
 	 */
 	@RequestMapping(value = "/save#lowername#", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo saveOrUpdate(HttpServletRequest request,@ModelAttribute #classname# #lowername#) {
+	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody #classname# #lowername#) {
 		ResultInfo rs = new ResultInfo();
 		try {
 			#lowername#Service.update(#lowername#);
