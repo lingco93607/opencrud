@@ -124,9 +124,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
 <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
-
-
 <body>
+  <log-form @has-log="onSuccessLog"></log-form>
   <div id="table">
 	<h4 class='header'>教师信息录入</h4>
     <div class="add">
@@ -142,16 +141,9 @@
           <th v-for="item in headInfo">{{item.text}}</th>
         </tr>
       </thead>
-      <tbody id="">
-        <tr v-for="(item, index) in newsList">
-          <td width="5%">{{index+1}}</td>
-          <td width="20%">{{item.tname}}</td>
-          <td width="20%">{{item.sex}}</td>
-          <td width="20%">{{item.major}}</td>
-		  <td width="10%"><span @click="deletelist(item.id,index)" class="delete">删除</span></td>
-        </tr>
-      </tbody>
+	  <!--<table-content :data-list="newsList"></table-content>-->
     </table>
+	<tableCompoent data-list="aaaaaaaaaa"></tableCompoent>
 	<h4 class='header'>学生信息录入</h4>
 	<div class="add">
 	  <input type="text" v-model="addStudentInfo.sid" name="id" value="" placeholder="学号" />
@@ -182,109 +174,116 @@
   </div>
   <!-- built files will be auto injected -->
 </body>
-<script type="text/javascript">
-  /* eslint-disable no-new */
-  new Vue({
-    el: '#table',
-    data: {
-      addDetail: {},       //教师信息
-	  addStudentInfo:{},   //学生信息
-      editlist: false,
-      editDetail: {},
-      headInfo: [{ text: '序号' }, { text: '姓名' }, { text: '性别' }, { text: '课程' }, { text: '操作' }],
-	  headStudentInfo: [{ text: '序号' }, { text: '姓名' }, { text: '性别' }, { text: '课程' }, { text: '操作' }],
-      newsList: [],
-	  newStudentList: [],
-	  majorInfo: [],    //当前已录入课程信息
-      editid: ''
-    },
-    created() {
+<script type="text/babel">
+
+	import logForm from "logForm.vue"
+	/*Vue.component('table-content',{
+		props:['dataList'],
+		template:'<tbody id=""><tr v-for="(item, index) in dataList"><td width="5%">{{index+1}}</td><td width="20%">{{item.tname}}</td><td width="20%">{{item.sex}}</td><td width="20%">{{item.major}}</td></tr></tbody>',
+    });*/
 	
-		//获取教师信息
-		var url = './action/teacher/getteachers?start=0&end=10';
-		this.$http.get(url)
-		.then((response) => {
-			var len = response.body.length;
-			for(var i=0;i<len;i++)
-			{
-				this.newsList.push(response.body[i]);
-				this.majorInfo.push(response.body[i].major);
-			}
-		})
-		.catch(function(response) {
-
-			console.log(response)
-		}) 
-		
-		//获取学生和课程信息
-		var urlSelect = './action/course/getallcourses';
-		this.$http.get(urlSelect)
-		.then((response) => {
-			var len = response.body.length;
-			for(var i=0;i<len;i++)
-			{
-				this.newStudentList.push(response.body[i]);
-			}
-		})
-		.catch(function(response) {
-
-			console.log(response)
-		}) 
-		
-    },
-    methods: {
-
-        //新增教师信息
-		adddetail() {
-			this.newsList.push(this.addDetail)
-			var url = './action/teacher/saveteacher';
-			
-			this.$http.post(url,
-			
-				{
-					"tid":this.addDetail.tid,
-					"tname":this.addDetail.tname,
-					"sex":this.addDetail.sex,
-					"major":this.addDetail.major
-				},
-				{emulateJSON: false})
-				.then(
-				  (response)=>{
-					console.log(response); 
-				  },
-				  (error)=>{
-					console.log(error);
-				  }
-				);
-
+	new Vue({
+		el: '#table',
+		data: {
+		  addDetail: {},       //教师信息
+		  addStudentInfo:{},   //学生信息
+		  editlist: false,
+		  editDetail: {},
+		  headInfo: [{ text: '序号' }, { text: '姓名' }, { text: '性别' }, { text: '课程' }, { text: '操作' }],
+		  headStudentInfo: [{ text: '序号' }, { text: '姓名' }, { text: '性别' }, { text: '课程' }, { text: '操作' }],
+		  newsList: [],
+		  newStudentList: [],
+		  majorInfo: [],    //当前已录入课程信息
+		  editid: ''
 		},
-
-		addStudent() {
-
-			this.newStudentList.push(this.addStudentInfo)
-			var url = './action/course/savecourse';
+		components: { logForm },
+		created() {
 		
-			this.$http.post(url,
-			
+			//获取教师信息
+			var url = './action/teacher/getteachers?start=0&end=10';
+			this.$http.get(url)
+			.then((response) => {
+				var len = response.body.length;
+				for(var i=0;i<len;i++)
 				{
-					"sid":this.addStudentInfo.sid,
-					"sname":this.addStudentInfo.sname,
-					"sex":this.addStudentInfo.sex,
-					"courseList":this.addStudentInfo.courseList,
-				},
-				{emulateJSON: false})
-				.then(
-				  (response)=>{
-					console.log(response); 
-				  },
-				  (error)=>{
-					console.log(error);
-				  }
-				);
+					this.newsList.push(response.body[i]);
+					this.majorInfo.push(response.body[i].major);
+				}
+			})
+			.catch(function(response) {
 
-		},		
+				console.log(response)
+			}) 
+			
+			//获取学生和课程信息
+			var urlSelect = './action/course/getallcourses';
+			this.$http.get(urlSelect)
+			.then((response) => {
+				var len = response.body.length;
+				for(var i=0;i<len;i++)
+				{
+					this.newStudentList.push(response.body[i]);
+				}
+			})
+			.catch(function(response) {
 
-     },
+				console.log(response)
+			}) 
+			
+		},
+		methods: {
+
+			//新增教师信息
+			adddetail() {
+				this.newsList.push(this.addDetail)
+				var url = './action/teacher/saveteacher';
+				
+				this.$http.post(url,
+				
+					{
+						"tid":this.addDetail.tid,
+						"tname":this.addDetail.tname,
+						"sex":this.addDetail.sex,
+						"major":this.addDetail.major
+					},
+					{emulateJSON: false})
+					.then(
+					  (response)=>{
+						console.log(response); 
+					  },
+					  (error)=>{
+						console.log(error);
+					  }
+					);
+
+			},
+
+			addStudent() {
+
+				this.newStudentList.push(this.addStudentInfo)
+				var url = './action/course/savecourse';
+			
+				this.$http.post(url,
+				
+					{
+						"sid":this.addStudentInfo.sid,
+						"sname":this.addStudentInfo.sname,
+						"sex":this.addStudentInfo.sex,
+						"courseList":this.addStudentInfo.courseList,
+					},
+					{emulateJSON: false})
+					.then(
+					  (response)=>{
+						console.log(response); 
+					  },
+					  (error)=>{
+						console.log(error);
+					  }
+					);
+
+			},		
+
+		 },
  
   });
 </script>
