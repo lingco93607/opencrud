@@ -82,7 +82,7 @@
 
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>com.z4.papa.rest.RestApplication</param-value>
+			<param-value>com.z4.zhazha.forum.rest.RestApplication</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

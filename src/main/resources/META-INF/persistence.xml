@@ -7,7 +7,9 @@
 	<persistence-unit name="zhazha-forum" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.z4.zhazha.forum.pojo.Book</class>
+		<class>com.z4.zhazha.forum.pojo.Course</class>
 		<class>com.z4.zhazha.forum.pojo.Student</class>
+		<class>com.z4.zhazha.forum.pojo.Teacher</class>
 		<class>com.z4.zhazha.forum.pojo.ZUser</class>
 
 

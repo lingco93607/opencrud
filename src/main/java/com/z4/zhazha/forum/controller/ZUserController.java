@@ -24,7 +24,7 @@ import com.z4.zhazha.forum.dto.PaginationList;
 import com.z4.zhazha.forum.pojo.ZUser;
 import com.z4.zhazha.forum.service.IService;
 import com.z4.zhazha.forum.util.ResultInfo;
-
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/zuser")
@@ -159,7 +159,7 @@ public class ZUserController {
 	 */
 	@RequestMapping(value = "/savezuser", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo saveOrUpdate(HttpServletRequest request,@ModelAttribute ZUser zuser) {
+	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody ZUser zuser) {
 		ResultInfo rs = new ResultInfo();
 		try {
 			zuserService.update(zuser);

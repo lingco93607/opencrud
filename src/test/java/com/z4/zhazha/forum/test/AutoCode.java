@@ -476,10 +476,10 @@ public class AutoCode {
 				Object f = getPojoObject(packageName + ".pojo", s);
 				Annotation[] as = f.getClass().getAnnotations();
 				if (f.getClass().isAnnotationPresent(Autocode.class)) {
-					changeJSFile(packageName, s);
-					changeJSPFile(packageName, s);
-					changeInfoJSFile(packageName, s);
-					changeJSPFile(packageName, s);
+					//changeJSFile(packageName, s);
+					//changeJSPFile(packageName, s);
+					//changeInfoJSFile(packageName, s);
+					//changeJSPFile(packageName, s);
 					changeDaoImplFile(packageName, s);
 					changeServiceImplFile(packageName, s);
 					changeControllerFile(packageName, s);

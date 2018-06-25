@@ -1,4 +1,4 @@
-package #packagename#.controller#folderName#;
+package com.z4.zhazha.forum.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -21,21 +21,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import #packagename#.dto.PaginationList;
-import #packagename#.pojo#folderName#.#classname#;
-import #packagename#.service.IService;
-import #packagename#.util.ResultInfo;
+import com.z4.zhazha.forum.dto.PaginationList;
+import com.z4.zhazha.forum.pojo.Course;
+import com.z4.zhazha.forum.service.IService;
+import com.z4.zhazha.forum.util.ResultInfo;
 
 
 @Controller
-@RequestMapping("/#lowername#")
-public class #classname#Controller {
+@RequestMapping("/course")
+public class CourseController {
 	
 	@Autowired
-	@Qualifier("#lowername#service")
-	private IService<#classname#> #lowername#Service;
+	@Qualifier("courseservice")
+	private IService<Course> courseService;
 	
-	private static Logger log = LoggerFactory.getLogger(#classname#Controller.class);
+	private static Logger log = LoggerFactory.getLogger(CourseController.class);
 	
 	/**
 	 * <p>跳转到book的list页面<br/>
@@ -54,26 +54,26 @@ public class #classname#Controller {
 	 * </pre>
 	 */
 	@RequestMapping(value="/index",method={RequestMethod.GET})
-	public ModelAndView #lowername#(HttpServletRequest request){
-	  return new ModelAndView("#lowername#/#lowername#","params",null);		
+	public ModelAndView course(HttpServletRequest request){
+	  return new ModelAndView("course/course","params",null);		
 	}
 	
-	@RequestMapping(value="/get#lowername#s",method={RequestMethod.GET})
+	@RequestMapping(value="/getcourses",method={RequestMethod.GET})
 	@ResponseBody
-	public List<#classname#> get#classname#s(HttpServletRequest request,  @RequestParam(value = "start") int startPos,
+	public List<Course> getCourses(HttpServletRequest request,  @RequestParam(value = "start") int startPos,
 			@RequestParam(value = "end") int endPos)
 	{
-		List<#classname#> bk = new ArrayList<#classname#>();
-		bk=(List<#classname#>) #lowername#Service.query(#classname#.class, " 1=1 ", null, startPos, endPos);
+		List<Course> bk = new ArrayList<Course>();
+		bk=(List<Course>) courseService.query(Course.class, " 1=1 ", null, startPos, endPos);
 		return bk;		
 	}
 	
-	@RequestMapping(value="/getall#lowername#s",method={RequestMethod.GET})
+	@RequestMapping(value="/getallcourses",method={RequestMethod.GET})
 	@ResponseBody
-	public List<#classname#> get#classname#s(HttpServletRequest request)
+	public List<Course> getCourses(HttpServletRequest request)
 	{
-		List<#classname#> bk = new ArrayList<#classname#>();
-		bk=(List<#classname#>) #lowername#Service.query(#classname#.class, " 1=1 ");
+		List<Course> bk = new ArrayList<Course>();
+		bk=(List<Course>) courseService.query(Course.class, " 1=1 ");
 		return bk;		
 	}
 	
@@ -95,14 +95,14 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value="/get#lowername#/{id}",method={RequestMethod.GET})
+	@RequestMapping(value="/getcourse/{id}",method={RequestMethod.GET})
 	@ResponseBody
-	public ModelAndView get#classname#(HttpServletRequest request, @PathVariable Long id){
-		#classname# bk = null;
+	public ModelAndView getCourse(HttpServletRequest request, @PathVariable Long id){
+		Course bk = null;
 		if(id!=-1l&&!"".equals(id)){
-		   bk = (#classname#) #lowername#Service.get(#classname#.class,id);
+		   bk = (Course) courseService.get(Course.class,id);
 		}
-		return new ModelAndView("#lowername#/#lowername#_info","params",bk);	
+		return new ModelAndView("course/course_info","params",bk);	
 	}
 	
 	/**
@@ -123,9 +123,9 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value="/get#lowername#List",method={RequestMethod.GET})
+	@RequestMapping(value="/getcourseList",method={RequestMethod.GET})
 	@ResponseBody
-	public PaginationList get#lowername#List(@RequestParam Integer pagesize, @RequestParam Integer pagenum,@RequestParam("name") String name){
+	public PaginationList getcourseList(@RequestParam Integer pagesize, @RequestParam Integer pagenum,@RequestParam("name") String name){
 		PaginationList list = new PaginationList();
 		String sql = " 1=1 ";
 		try {
@@ -133,9 +133,9 @@ public class #classname#Controller {
 			if(column_name!=null&&!"".equals(column_name)){
 				sql+=" and name like "+"'%"+column_name+"%'";
 			}
-			list = #lowername#Service.queryByPage(#classname#.class, sql, pagesize, pagenum);
+			list = courseService.queryByPage(Course.class, sql, pagesize, pagenum);
 		} catch (UnsupportedEncodingException e) {
-			log.error("get#classname#List:", e.getMessage());
+			log.error("getCourseList:", e.getMessage());
 		}
 		return list;		
 	}
@@ -158,12 +158,12 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value = "/save#lowername#", method = RequestMethod.POST)
+	@RequestMapping(value = "/savecourse", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody #classname# #lowername#) {
+	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody Course course) {
 		ResultInfo rs = new ResultInfo();
 		try {
-			#lowername#Service.update(#lowername#);
+			courseService.update(course);
 			rs.setMessage("保存成功");
 		} catch (Exception e) {
 			rs.setMessage("保存失败");
@@ -187,12 +187,12 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value = "/del#lowername#s", method = RequestMethod.POST)
+	@RequestMapping(value = "/delcourses", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo delusers(@RequestParam("#lowername#sId[]") Set<Long> #lowername#Ids) {
+	public ResultInfo delusers(@RequestParam("coursesId[]") Set<Long> courseIds) {
 		ResultInfo rs = new ResultInfo();
 		try {
-		    #lowername#Service.delById(#classname#.class,#lowername#Ids);
+		    courseService.delById(Course.class,courseIds);
 			rs.setMessage("删除成功");
 		} catch (Exception e) {
 			rs.setMessage("删除失败");

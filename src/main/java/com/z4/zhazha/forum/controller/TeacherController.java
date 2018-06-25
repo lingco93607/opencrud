@@ -1,4 +1,4 @@
-package #packagename#.controller#folderName#;
+package com.z4.zhazha.forum.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -18,24 +18,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import #packagename#.dto.PaginationList;
-import #packagename#.pojo#folderName#.#classname#;
-import #packagename#.service.IService;
-import #packagename#.util.ResultInfo;
-
+import com.z4.zhazha.forum.dto.PaginationList;
+import com.z4.zhazha.forum.pojo.Teacher;
+import com.z4.zhazha.forum.service.IService;
+import com.z4.zhazha.forum.util.ResultInfo;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
-@RequestMapping("/#lowername#")
-public class #classname#Controller {
+@RequestMapping("/teacher")
+public class TeacherController {
 	
 	@Autowired
-	@Qualifier("#lowername#service")
-	private IService<#classname#> #lowername#Service;
+	@Qualifier("teacherservice")
+	private IService<Teacher> teacherService;
 	
-	private static Logger log = LoggerFactory.getLogger(#classname#Controller.class);
+	private static Logger log = LoggerFactory.getLogger(TeacherController.class);
 	
 	/**
 	 * <p>跳转到book的list页面<br/>
@@ -54,26 +53,26 @@ public class #classname#Controller {
 	 * </pre>
 	 */
 	@RequestMapping(value="/index",method={RequestMethod.GET})
-	public ModelAndView #lowername#(HttpServletRequest request){
-	  return new ModelAndView("#lowername#/#lowername#","params",null);		
+	public ModelAndView teacher(HttpServletRequest request){
+	  return new ModelAndView("teacher/teacher","params",null);		
 	}
 	
-	@RequestMapping(value="/get#lowername#s",method={RequestMethod.GET})
+	@RequestMapping(value="/getteachers",method={RequestMethod.GET})
 	@ResponseBody
-	public List<#classname#> get#classname#s(HttpServletRequest request,  @RequestParam(value = "start") int startPos,
+	public List<Teacher> getTeachers(HttpServletRequest request,  @RequestParam(value = "start") int startPos,
 			@RequestParam(value = "end") int endPos)
 	{
-		List<#classname#> bk = new ArrayList<#classname#>();
-		bk=(List<#classname#>) #lowername#Service.query(#classname#.class, " 1=1 ", null, startPos, endPos);
+		List<Teacher> bk = new ArrayList<Teacher>();
+		bk=(List<Teacher>) teacherService.query(Teacher.class, " 1=1 ", null, startPos, endPos);
 		return bk;		
 	}
 	
-	@RequestMapping(value="/getall#lowername#s",method={RequestMethod.GET})
+	@RequestMapping(value="/getallteachers",method={RequestMethod.GET})
 	@ResponseBody
-	public List<#classname#> get#classname#s(HttpServletRequest request)
+	public List<Teacher> getTeachers(HttpServletRequest request)
 	{
-		List<#classname#> bk = new ArrayList<#classname#>();
-		bk=(List<#classname#>) #lowername#Service.query(#classname#.class, " 1=1 ");
+		List<Teacher> bk = new ArrayList<Teacher>();
+		bk=(List<Teacher>) teacherService.query(Teacher.class, " 1=1 ");
 		return bk;		
 	}
 	
@@ -95,14 +94,14 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value="/get#lowername#/{id}",method={RequestMethod.GET})
+	@RequestMapping(value="/getteacher/{id}",method={RequestMethod.GET})
 	@ResponseBody
-	public ModelAndView get#classname#(HttpServletRequest request, @PathVariable Long id){
-		#classname# bk = null;
+	public ModelAndView getTeacher(HttpServletRequest request, @PathVariable Long id){
+		Teacher bk = null;
 		if(id!=-1l&&!"".equals(id)){
-		   bk = (#classname#) #lowername#Service.get(#classname#.class,id);
+		   bk = (Teacher) teacherService.get(Teacher.class,id);
 		}
-		return new ModelAndView("#lowername#/#lowername#_info","params",bk);	
+		return new ModelAndView("teacher/teacher_info","params",bk);	
 	}
 	
 	/**
@@ -123,9 +122,9 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value="/get#lowername#List",method={RequestMethod.GET})
+	@RequestMapping(value="/getteacherList",method={RequestMethod.GET})
 	@ResponseBody
-	public PaginationList get#lowername#List(@RequestParam Integer pagesize, @RequestParam Integer pagenum,@RequestParam("name") String name){
+	public PaginationList getteacherList(@RequestParam Integer pagesize, @RequestParam Integer pagenum,@RequestParam("name") String name){
 		PaginationList list = new PaginationList();
 		String sql = " 1=1 ";
 		try {
@@ -133,9 +132,9 @@ public class #classname#Controller {
 			if(column_name!=null&&!"".equals(column_name)){
 				sql+=" and name like "+"'%"+column_name+"%'";
 			}
-			list = #lowername#Service.queryByPage(#classname#.class, sql, pagesize, pagenum);
+			list = teacherService.queryByPage(Teacher.class, sql, pagesize, pagenum);
 		} catch (UnsupportedEncodingException e) {
-			log.error("get#classname#List:", e.getMessage());
+			log.error("getTeacherList:", e.getMessage());
 		}
 		return list;		
 	}
@@ -158,12 +157,12 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value = "/save#lowername#", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveteacher", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody #classname# #lowername#) {
+	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody Teacher teacher) {
 		ResultInfo rs = new ResultInfo();
 		try {
-			#lowername#Service.update(#lowername#);
+			teacherService.update(teacher);
 			rs.setMessage("保存成功");
 		} catch (Exception e) {
 			rs.setMessage("保存失败");
@@ -187,12 +186,12 @@ public class #classname#Controller {
 	 * 失败：
 	 * </pre>
 	 */
-	@RequestMapping(value = "/del#lowername#s", method = RequestMethod.POST)
+	@RequestMapping(value = "/delteachers", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo delusers(@RequestParam("#lowername#sId[]") Set<Long> #lowername#Ids) {
+	public ResultInfo delusers(@RequestParam("teachersId[]") Set<Long> teacherIds) {
 		ResultInfo rs = new ResultInfo();
 		try {
-		    #lowername#Service.delById(#classname#.class,#lowername#Ids);
+		    teacherService.delById(Teacher.class,teacherIds);
 			rs.setMessage("删除成功");
 		} catch (Exception e) {
 			rs.setMessage("删除失败");

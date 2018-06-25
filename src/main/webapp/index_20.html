@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>学校信息管理系统</title>
+
+</head>
+<body>
+<div id="table">
+	<div class="add">
+	    <input type="text" v-model="addDetail.number" name="number" value="" placeholder="工号" />
+		<input type="text" v-model="addDetail.name" name="name" value="" placeholder="姓名" />
+		<input type="text" v-model="addDetail.sex" name="sex" value="" placeholder="性别" />
+		<input type="text" v-model="addDetail.course" name="course" value="" placeholder="课程" />
+	</div>
+	<table cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<th v-for="item in headInfo">{{item.text}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="(item) in newsList">
+				<td width="20%">{{item.number}}</td>
+				<td width="20%">{{item.name}}</td>
+				<td width="20%">{{item.sex}}</td>
+				<td width="20%">{{item.course}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p></p>
+<p>来源：<a href="" target="_blank">zyy</a></p>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+var app = new Vue({
+	el: '#table',
+	data: {
+		addDetail: {},
+		editlist: false,
+		editDetail: {},
+		headInfo:[{text:'序号'},{text:'工号'},{text:'姓名'},{text:'性别'},{text:'课程'},{text:'操作'}],
+		newsList: [{
+			id:0,
+			number:'98989',
+			name: 'zyy',
+			sex:'女',
+			course: '语文',
+		}],
+		editid:''
+	},
+	mounted() {
+
+	},
+	methods: {
+
+		//新增
+		adddetail() {
+			//这里的思路应该是把this.addDetail传给服务端，然后加载列表this.newsList
+			//this.newsList.push(this.addDetail)
+			/*this.newsList.push({
+				name: this.addDetail.name,
+				chinese: this.addDetail.chinese,
+				math: this.addDetail.math,
+				english: this.addDetail.english,
+			})*/
+
+			//axios.post('url',this.addDetail).then((res) =>{
+			//若返回正确结果，清空新增输入框的数据
+			//this.addDetail.title = ""
+			//this.addDetail.user = ""
+			//this.addDetail.dates = ""
+			//})
+
+		},
+		//删除
+		deletelist(id, i) {
+			this.newsList.splice(i, 1);
+			//这边可以传id给服务端进行删除  ID = id
+			//axios.get('url',{ID:id}).then((res) =>{
+			//			加载列表				
+			//})
+		},
+		//编辑
+		edit(item) {
+			this.editDetail = {			
+				name: item.name,
+				chinese: item.chinese,
+				math: item.math,
+				english: item.english,
+			}
+			this.editlist = true
+			this.editid = item.id
+			
+		},
+		//确认更新
+		update() {
+			//编辑的话，也是传id去服务端
+			//axios.get('url',{ID:id}).then((res) =>{
+			//			加载列表				
+			//})
+			let _this= this
+			for(let i = 0; i < _this.newsList.length; i++) {
+				if(_this.newsList[i].id ==this.editid) {
+					_this.newsList[i] = {
+						title: _this.editDetail.title,
+						user: _this.editDetail.user,
+						dates: _this.editDetail.dates,
+						id: this.editid
+					}
+					this.editlist = false
+				}
+			}
+		}
+	}
+});
+
+</script>
+
+</html>

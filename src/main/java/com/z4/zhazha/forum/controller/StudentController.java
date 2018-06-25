@@ -25,7 +25,7 @@ import com.z4.zhazha.forum.pojo.Student;
 import com.z4.zhazha.forum.service.IService;
 import com.z4.zhazha.forum.util.ResultInfo;
 
-
+import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 @RequestMapping("/student")
 public class StudentController {
@@ -159,7 +159,7 @@ public class StudentController {
 	 */
 	@RequestMapping(value = "/savestudent", method = RequestMethod.POST)
 	@ResponseBody
-	public ResultInfo saveOrUpdate(HttpServletRequest request,@ModelAttribute Student student) {
+	public ResultInfo saveOrUpdate(HttpServletRequest request,@RequestBody Student student) {
 		ResultInfo rs = new ResultInfo();
 		try {
 			studentService.update(student);

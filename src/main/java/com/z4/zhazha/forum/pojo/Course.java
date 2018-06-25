@@ -1,26 +1,21 @@
 package com.z4.zhazha.forum.pojo;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import com.z4.zhazha.forum.annotation.Autocode;
 
-
+import java.util.ArrayList;
 @Entity
-//@Autocode
-public class Student {
-	
+@Autocode
+public class Course {
 	@Id
 	private int sid;
 	
 	private String sname;
 	
 	private int sex;
-	
-	private String home;
+
+	private String courseList;
 
 	public int getSid() {
 		return sid;
@@ -46,16 +41,11 @@ public class Student {
 		this.sex = sex;
 	}
 
-	public String getHome() {
-		return home;
+	public String getCourseList() {
+		return courseList;
 	}
 
-	public void setHome(String home) {
-		this.home = home;
+	public void setCourseList(String courseList) {
+		this.courseList = courseList;
 	}
-	
-	
-	
-	
-
 }

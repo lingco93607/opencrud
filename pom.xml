@@ -15,9 +15,9 @@
 			<!-- 本地环境 -->
 			<id>local</id>
 			<properties>
-				<db-url>jdbc:postgresql://localhost:5432/papa</db-url>
-				<db-username>lingco</db-username>
-				<db-password>aaaaaa</db-password>
+				<db-url>jdbc:postgresql://localhost:5432/data1</db-url>
+				<db-username>admin</db-username>
+				<db-password>yuyang0516</db-password>
 				<forumImgPath>f:\data\forumimg\</forumImgPath>
 			</properties>
 			<activation>
@@ -38,10 +38,10 @@
 			<!-- 开发环境 -->
 			<id>dev</id>
 			<properties>
-				<db-url>jdbc:postgresql://localhost:5432/jl</db-url>
-				<db-username>lingco</db-username>
-				<db-password>aaaaaa</db-password>
-				<forumImgPath>/home/data/forumimg/</forumImgPath>
+				<db-url>jdbc:postgresql://localhost:5432/data1</db-url>
+				<db-username>admin</db-username>
+				<db-password>yuyang0516</db-password>
+				<forumImgPath>f:\data\forumimg\</forumImgPath>
 			</properties>
 			<!-- 默认激活本环境 -->
 
@@ -439,7 +439,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<warName>zhazhaForum</warName>
+					<warName>zyy</warName>
 
 					<outputDirectory>/${tomcat.outputDirectory.lingco}</outputDirectory>
 					<webResources>
@@ -462,9 +462,9 @@
 		<hibernate.version>4.2.1.Final</hibernate.version>
 		<jersey.version>2.25</jersey.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tomcat.outputDirectory.xintt>/Users/lingco/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.xintt>
-		<tomcat.outputDirectory.xiaoy>/Users/lingco/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.xiaoy>
-		<tomcat.outputDirectory.lingco>/Users/lingco/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.lingco>
+		<tomcat.outputDirectory.xintt>D:/apk/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.xintt>
+		<tomcat.outputDirectory.xiaoy>D:/apk/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.xiaoy>
+		<tomcat.outputDirectory.lingco>D:/apk/apache-tomcat-9.0.8/webapps</tomcat.outputDirectory.lingco>
 
 	</properties>
 </project>

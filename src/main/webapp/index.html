@@ -1,165 +1,135 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>form</title>
-
-<style type="text/css">
-	#table table {
-		width: 100%;
-		font-size: 14px;
-		border: 1px solid #eee
-	}
-	
-	#table {
-		padding: 0 10px;
-	}
-	
-	table thead th {
-		background: #f5f5f5;
-		padding: 10px;
-		text-align: left;
-	}
-	
-	table tbody td {
-		padding: 10px;
-		text-align: left;
-		border-bottom: 1px solid #eee;
-		border-right: 1px solid #eee;
-	}
-	
-	table tbody td span {
-		margin: 0 10px;
-		cursor: pointer;
-	}
-	
-	.delete {
-		color: red;
-	}
-	
-	.edit {
-		color: #008cd5;
-	}
-	
-	.add {
-		border: 1px solid #eee;
-		margin: 10px 0;
-		padding: 15px;
-	}
-	
-	input {
-		border: 1px solid #ccc;
-		padding: 5px;
-		border-radius: 3px;
-		margin-right: 15px;
-	}
-	
-	button {
-		background: #008cd5;
-		border: 0;
-		padding: 4px 15px;
-		border-radius: 3px;
-		color: #fff;
-	}
-	
-	#mask {
-		background: rgba(0, 0, 0, .5);
-		width: 100%;
-		height: 100%;
-		position: fixed;
-		z-index: 4;
-		top: 0;
-		left: 0;
-	}
-	
-	.mask {
-		width: 300px;
-		height: 250px;
-		background: rgba(255, 255, 255, 1);
-		position: absolute;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		margin: auto;
-		z-index: 47;
-		border-radius: 5px;
-	}
-	
-	.title {
-		padding: 10px;
-		border-bottom: 1px solid #eee;
-	}
-	
-	.title span {
-		float: right;
-		cursor: pointer;
-	}
-	
-	.content {
-		padding: 10px;
-	}
-	
-	.content input {
-		width: 270px;
-		margin-bottom: 15px;
-	}
-</style>
-
-</head>
-<body>
-<div id="table">
-	<div class="add">
-		<input type="text" v-model="addDetail.name" name="name" value="" placeholder="姓名" />
-		<input type="text" v-model="addDetail.chinese" name="chinese" value="" placeholder="语文" />
-		<input type="text" v-model="addDetail.math" name="math" value="" placeholder="数学" />
-	    <input type="text" v-model="addDetail.english" name="english" value="" placeholder="英语" />
-		<button @click="adddetail">新增</button>
-	</div>
-	<table cellpadding="0" cellspacing="0">
-		<thead>
-			<tr>
-				<th v-for="item in headInfo">{{item.text}}</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr v-for="(item,index) in newsList">
-				<td width="5%">{{index+1}}</td>
-				<td width="20%">{{item.name}}</td>
-				<td width="20%">{{item.chinese}}</td>
-				<td width="20%">{{item.math}}</td>
-				<td width="20%">{{item.english}}</td>
-				<td width="10%"><span @click="deletelist(item.id,index)" class="delete">删除</span><span class="edit" @click="edit(item)">编辑</span></td>
-			</tr>
-		</tbody>
-	</table>
-	<div id="mask" v-if="editlist">
-		<div class="mask">
-			<div class="title">
-				编辑
-				<span @click="editlist=false">
-					X
-				</span>
-			</div>
-			<div class="content">
-				<input type="text" v-model="addDetail.name" name="name" value="" placeholder="姓名" />
-				<input type="text" v-model="addDetail.chinese" name="chinese" value="" placeholder="语文" />
-				<input type="text" v-model="addDetail.math" name="math" value="" placeholder="数学" />
-	  			<input type="text" v-model="addDetail.english" name="english" value="" placeholder="英语" />
-				<button @click="update">更新</button>
-				<button @click="editlist=false">取消</button>
-			</div>
-		</div>
-	</div>
-</div>
-<script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>国家电网管理培训系统</title>
+<meta name="description" content="自动生成界面" />
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/myLib.js"></script>
+<script type="text/javascript">
+$(function(){
+	myLib.progressBar();
+});
+$.include(['css/desktop.css', 'css/jquery-ui-1.8.18.custom.css', 'css/smartMenu.css' , 'js/jquery-ui-1.8.18.custom.min.js', 'js/jquery.winResize.js', 'js/jquery-smartMenu-min.js', 'js/desktop.js']);
+$(window).load(function(){
+		   myLib.stopProgress();
+		   var lrBarIconData={
+			   'app0':{
+					   'title':'办公管理',
+					   'url':'./action/book/index',
+					   'winWidth':1100,
+					   'winHeight':650
+					   },
+				'app1':{
+					   'title':'权限管理',
+					   'url':'./action/book/index',
+					   'winWidth':1100,
+					   'winHeight':650
+					   },
+				'app2':{
+					   'title':'业务管理',
+					   'url':'./action/book/index',
+					   'winWidth':1100,
+					   'winHeight':650
+					   },
+				'app3':{
+					   'title':'系统设置',
+					   'url':'ziyuan.html',
+					   'winWidth':1100,
+					   'winHeight':650
+					   }
+					   };
+		  var deskIconData={
+			        'course':{'title':'course management','url':'./action/course/index','winWidth':950,'winHeight':500}
+			  };			   
+ 		   
+		  //存储桌面布局元素的jquery对象
+		   myLib.desktop.desktopPanel();
+ 		   
+		   //初始化桌面背景
+		   myLib.desktop.wallpaper.init("images/blue_glow.jpg");
+		   
+		   //初始化任务栏
+		   myLib.desktop.taskBar.init();
+		   
+		   //初始化桌面图标
+		   myLib.desktop.deskIcon.init(deskIconData);
+		   
+		   //初始化桌面导航栏
+		   myLib.desktop.navBar.init();
+		   
+		   //初始化侧边栏
+		   myLib.desktop.lrBar.init(lrBarIconData);
+		   
+  		  
+		  });		
 
 </script>
+</head>
+<body>
 
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-<p>适用浏览器：FireFox、Chrome,不支持IE8及以下浏览器。</p>
-<p>来源：<a href="" target="_blank">zyy</a></p>
-</div>
+
+<div id="wallpapers"></div>
+
+<div id="navBar"><a href="#" class="currTab" title="桌面1"></a><a href="#"  title="桌面2"></a><a href="#"  title="桌面3"></a><a href="#"  title="桌面4"></a></div>
+
+<div id="desktopPanel">
+	<div id="desktopInnerPanel">
+		<ul class="deskIcon currDesktop">
+			
+<li class="desktop_icon" id="course"><span class="icon"><img src="icon/icon10.png"/></span><div class="text">course management<s></s></div></li>
+		</ul>
+		<ul class="deskIcon">
+			<li class="desktop_icon" id="book"><span class="icon"><img src="icon/icon13.png"/></span><div class="text">图书管理<s></s></div></li>
+			<li class="desktop_icon" id="project"><span class="icon"><img src="icon/icon12.png"/></span><div class="text">项目管理<s></s></div></li>
+			<li class="desktop_icon add_icon"><span class="icon"><img src="images/add_icon.png"/></span><div class="text">添加<s></s></div></li>
+		</ul>
+		<ul class="deskIcon">
+			<li class="desktop_icon" id="project"><span class="icon"><img src="icon/icon18.png"/></span><div class="text">搜狐汽车<s></s></div></li>
+			<li class="desktop_icon add_icon"><span class="icon"><img src="images/add_icon.png"/></span><div class="text">添加<s></s></div></li>
+		</ul>
+		<ul class="deskIcon">
+			<li class="desktop_icon" id="student"><span class="icon"><img src="icon/icon20.png"/></span><div class="text">火影忍者漫画动画<s></s></div></li>
+			<li class="desktop_icon add_icon"><span class="icon"><img src="images/add_icon.png"/></span><div class="text">添加<s></s></div></li>
+		</ul>
+	</div>
+</div><!--desktopPanel end-->
+
+<div id="taskBarWrap">
+	<div id="taskBar">
+		<div id="leftBtn"><a href="#" class="upBtn"></a></div>
+		<div id="rightBtn"><a href="#" class="downBtn"></a></div>
+		<div id="task_lb_wrap"><div id="task_lb"></div></div>
+	</div>
+</div><!--taskBarWrap end-->
+
+<div id="lr_bar">
+	<ul id="default_app">
+		<li id="app0"><span><img src="icon/icon1.png" title="办公"/></span><div class="text">我的博客<s></s></div></li>
+		<li id="app1"><span><img src="icon/icon2.png" title="权限"/></span><div class="text">关于我<s></s></div></li>
+		<li id="app2"><span><img src="icon/icon3.png" title="业务"/></span><div class="text">作品<s></s></div></li>
+		<li id="app3"><span><img src="icon/icon11.png" title="系统"/></span><div class="text">资源分享<s></s></div></li>
+	</ul>
+	
+	<div id="default_tools"><span id="showZm_btn" title="全屏"></span><span id="shizhong_btn" title="时钟"></span><span id="weather_btn" title="天气"></span><span id="them_btn" title="主题"></span></div>
+	
+	<div id="start_block">
+		<a title="开始" id="start_btn"></a>
+		<div id="start_item">
+			<ul class="item admin">
+				<li><span class="adminImg"></span> jsfoot</li>
+			</ul>
+			<ul class="item">
+				<li><span class="sitting_btn"></span>系统设置</li>
+				<li><span class="help_btn"></span>使用指南 <b></b></li>
+				<li><span class="about_btn"></span>关于我们</li>
+				<li><span class="logout_btn"></span>退出系统</li>
+			</ul>
+		</div>
+	</div>
+	
+</div><!--lr_bar end-->
+	
+
 </body>
 </html>
